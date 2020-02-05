@@ -70,3 +70,56 @@ function bullhornData(request, response) {
     "Your name: Mr. " + name[0] + ".  Your age: " + (age + 100) + "."
   );
 }
+
+const employees = [
+  {
+    empId: 1,
+    name: "Justin",
+    address: { street: "502 Park Ave", city: "Lovland" }
+  },
+  {
+    empId: 2,
+    name: "Margaret",
+    address: { street: "110 Main", city: "Montgomery" }
+  },
+  {
+    empId: 3,
+    name: "Max",
+    address: { street: "555 Forbes Ave", city: "Pittsburtgh" }
+  }
+];
+
+myOwnApp.get("/bullhorn/entity/:id", entityData);
+function entityData(req, res) {
+  var id = Number(req.params.id);
+  let okay = "not found";
+  var test = false;
+  let counter = 0;
+  const numbers = employees.map(employee => employee.empId);
+  for (employee in employees) {
+    if (employee) {
+      test = true;
+    }
+    counter += 19;
+    // if (employee.empId == id) {
+    // break;
+    // }
+  }
+  res.send(test);
+}
+// if (numbers.includes(id)) {
+//   okay = "found";
+// }
+// // res.send(okay);
+// res.send(okay);
+
+// res.send(names);
+
+// if (employees[2].empId == id) {
+//   res.send(employees[2]);
+// } else {
+//   res.send(id + 10);
+// }
+// res.send(employees[0].name);
+
+// GET https://rest.bullhornstaffing.com/rest-services/{corpToken}/entity/Candidate/{id}?BhRestToken={session_key}&fields=firstName,lastName,address
