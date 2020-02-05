@@ -61,3 +61,12 @@ function bodyFunction(req, res) {
 
   res.send(user_id + ", " + token + ".  geo has " + geo.length + " letters");
 }
+
+myOwnApp.post("/bullhorn", bullhornData);
+function bullhornData(request, response) {
+  const name = request.body.name;
+  const age = request.body.age;
+  response.send(
+    "Your name: Mr. " + name[0] + ".  Your age: " + (age + 100) + "."
+  );
+}
