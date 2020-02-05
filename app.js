@@ -96,8 +96,8 @@ function entityData(req, res) {
   var test = false;
   let counter = 0;
   const numbers = employees.map(employee => employee.empId);
-  for (employee in employees) {
-    if (employee) {
+  for (const employee of employees) {
+    if (employee.empId == id) {
       test = true;
     }
     counter += 19;
