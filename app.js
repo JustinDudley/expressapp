@@ -85,43 +85,19 @@ const employees = [
   {
     empId: 3,
     name: "Max",
-    address: { street: "555 Forbes Ave", city: "Pittsburtgh" }
+    address: { street: "555 Forbes Ave", city: "Pittsburgh" }
   }
 ];
 
+// http://localhost:3000/bullhorn/entity/2
 myOwnApp.get("/bullhorn/entity/:id", entityData);
 function entityData(req, res) {
-  var id = Number(req.params.id);
-  let okay = "not found";
-  var test = false;
-  let counter = 0;
-  const numbers = employees.map(employee => employee.empId);
+  var chosenEmp = null;
+  var id = req.params.id;
   for (const employee of employees) {
     if (employee.empId == id) {
-      res.send(employee);
-      test = true;
+      chosenEmp = employee;
     }
-
-    counter += 19;
-    // if (employee.empId == id) {
-    // break;
-    // }
   }
-  // res.send(test);
+  res.send(chosenEmp ? chosenEmp : "not found");
 }
-// if (numbers.includes(id)) {
-//   okay = "found";
-// }
-// // res.send(okay);
-// res.send(okay);
-
-// res.send(names);
-
-// if (employees[2].empId == id) {
-//   res.send(employees[2]);
-// } else {
-//   res.send(id + 10);
-// }
-// res.send(employees[0].name);
-
-// GET https://rest.bullhornstaffing.com/rest-services/{corpToken}/entity/Candidate/{id}?BhRestToken={session_key}&fields=firstName,lastName,address
