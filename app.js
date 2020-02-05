@@ -98,14 +98,16 @@ function entityData(req, res) {
   const numbers = employees.map(employee => employee.empId);
   for (const employee of employees) {
     if (employee.empId == id) {
+      res.send(employee);
       test = true;
     }
+
     counter += 19;
     // if (employee.empId == id) {
     // break;
     // }
   }
-  res.send(test);
+  // res.send(test);
 }
 // if (numbers.includes(id)) {
 //   okay = "found";
